@@ -1,0 +1,54 @@
+Crear carperta en el escritorio
+Abrir el símbolo del sistema (cmd)
+Entrar a escritorio 
+*cd Desktop
+Entrar a la carpeta creada
+*cd Desktop>cd Proyecto_Django
+Instalar entorno de trabajo
+*pip install virtualenv
+Verificar la instalación pidiendo la versión
+*virtualenv --version
+Crear carpeta en entorno virtual
+*virtualenv venv (venv es el nombre de la carpeta)
+Activar el entorno virtual
+*.\venv\Scripts\activate
+Cargar el proyecto en visual studio code
+*Control + ship + p 
+*Click en python:selact interpreter
+*Luego click en Python 3.10.7 ('venv':venv)
+Se abre la terminal, si genera un error de seguridad se ejecuta como administrador en powershell el siguiente comando
+*Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+Instalar django
+*pip install django
+Verificar la versión instalada
+*django-admin --version
+Crear proyecto django. 
+Crear carpeta Ensayo
+*django-admin startproject Ensayo
+entrar a la carpeta creada
+*cd Ensayo
+Con el comando startapp, crear carpeta hola
+*python manage.py startapp hola
+Modificar hola/views.py para crear una vista única para la página de inicio de la aplicación
+*from django.http import HttpResponse
+*def home(request):
+*    return HttpResponse("Primer mensaje") 
+Crear un archivo, hola/urls.py, con el contenido a continuación. 
+*from django.urls import path
+*from hello import views
+*urlpatterns = [
+*    path("", views.home, name="home"),
+*]
+En la carpeta Ensayo/urls.py agregar la librería include
+Agregar la línea path("", include("hello.urls")),
+*from django.contrib import admin
+*from django.urls import include, path
+*urlpatterns = [
+*    path("", include("hola.urls")),
+*    path('admin/', admin.site.urls)
+*]
+Ingrese a la página
+*python manage.py runserver
+Nota: debe estar ubicado en la carpeta que contiene el archivo manage.py
+
+
